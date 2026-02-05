@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Invitación importante 🎱</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: radial-gradient(circle, #1f7a4f, #0f3d2e);
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.35);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .sub {
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    button {
+      padding: 15px 35px;
+      font-size: 18px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yes {
+      background: linear-gradient(135deg, #ff5fa2, #ff2e63);
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 0 15px rgba(255, 46, 99, 0.7);
+    }
+
+    #no {
+      background: #1c1c1c;
+      color: #fff;
+      position: absolute;
+    }
+
+    #counter {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ffd369;
+    }
+
+    #message {
+      margin-top: 10px;
+      font-style: italic;
+      color: #ffb4b4;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>¿Vamos a jugar al pool hoy? 🎱❤️</h1>
+    <div class="sub">Prometo risas, competencia dudosa y miradas lindas</div>
+
+    <button id="yes" onclick="aceptar()">Sí, obvio 💘</button>
+    <button id="no">No</button>
+
+    <div id="counter">Intentos fallidos: 0</div>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const counter = document.getElementById("counter");
+    const message = document.getElementById("message");
+
+    let intentos = 0;
+    let scale = 1;
+
+    const mensajes = [
+      "Esta opción no está disponible.",
+      "¿Qué estás apretando?",
+      "Dale… poné que sí.",
+      "El pool nos espera 🎱",
+      "¿En serio seguís?",
+      "Boludo, no.",
+      "Esto ya es una cita.",
+      "Aceptá tu destino romántico 💘"
+    ];
+
+    noBtn.addEventListener("mouseover", () => {
+      intentos++;
+      scale += 0.18;
+
+      const x = Math.random() * (window.innerWidth - 150);
+      const y = Math.random() * (window.innerHeight - 80);
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+      noBtn.style.transform = `scale(${scale})`;
+
+      counter.textContent = `Intentos fallidos: ${intentos}`;
+      message.textContent = mensajes[intentos % mensajes.length];
+    });
+
+    function aceptar() {
+      window.location.href = "si.html";
+    }
+  </script>
+
+</body>
+</html>
